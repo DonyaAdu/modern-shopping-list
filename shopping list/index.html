@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Shopping List Printer</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <form class="input-box" id="itemForm">
+    <input
+      id="itemInput"
+      type="text"
+      placeholder="Add an item to buy..."
+      autocomplete="off"
+    >
+
+    <button type="submit">Add</button>
+  </form>
+
+  <button
+    type="button"
+    class="clear-button"
+    id="clearButton"
+  >
+    Delete  List
+  </button>
+
+  <div class="typewriter-area">
+
+    <div class="paper-zone">
+
+      <div class="paper" id="paper">
+
+        <h2>Shopping List</h2>
+
+        <ul id="shoppingList"></ul>
+
+      </div>
+
+    </div>
+
+    <div class="typewriter">
+
+      <div class="slot">
+        <div class="slot-inner"></div>
+      </div>
+
+      <div class="typewriter-top">
+        <div class="top-highlight"></div>
+      </div>
+
+      <div class="control-panel">
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+      </div>
+
+      <span class="heart">♥</span>
+
+      <span class="side-button left"></span>
+      <span class="side-button right"></span>
+
+      <div class="keyboard">
+        <span class="key"></span>
+        <span class="key"></span>
+        <span class="key"></span>
+        <span class="key"></span>
+        <span class="key"></span>
+        <span class="key"></span>
+        <span class="key"></span>
+        <span class="key"></span>
+        <span class="key"></span>
+      </div>
+
+      <div class="paper-output"></div>
+
+      <button
+        class="print-button"
+        id="printButton"
+        type="button"
+      >
+        Print
+      </button>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
