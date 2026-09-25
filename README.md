@@ -6,7 +6,7 @@ A cute browser-based shopping list with a little pink printer, heart-shaped bull
 
 <p align="center">
   <img
-    src="https://i.postimg.cc/bvwmtnGW/image.png"
+    src="[https://i.postimg.cc/bvwmtnGW/image.png](https://i.postimg.cc/WbtpXWQx/preview.png)"
     alt="Shopping List Printer Preview"
     width="800"
   />
