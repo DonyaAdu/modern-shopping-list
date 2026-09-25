@@ -1,4 +1,5 @@
 const items = [];
+let printAnimation = null;
 
 const form = document.getElementById("itemForm");
 const input = document.getElementById("itemInput");
@@ -61,6 +62,11 @@ list.addEventListener("click", function (event) {
 });
 
 clearButton.addEventListener("click", function () {
+  if (printAnimation) {
+    printAnimation.cancel();
+    printAnimation = null;
+  }
+  printButton.disabled = false;
   items.length = 0;
 
   renderList();
@@ -70,16 +76,34 @@ clearButton.addEventListener("click", function () {
   input.focus();
 });
 
-printButton.addEventListener("click", function () {
+printButton.addEventListener("click", async function () {
+  if (printAnimation) return;
+
   renderList();
+  paper.classList.add("printed");
 
-  paper.classList.remove("printed");
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  requestAnimationFrame(function () {
-    requestAnimationFrame(function () {
-      paper.classList.add("printed");
-    });
+  printButton.disabled = true;
+  const animation = paper.animate([
+    { transform: "translateY(calc(100% - 12px))" },
+    { transform: "translateY(0)" }
+  ], {
+    duration: Math.min(2400, Math.max(1200, paper.offsetHeight * 2)),
+    easing: "cubic-bezier(0.45, 0, 0.2, 1)"
   });
+  printAnimation = animation;
+
+  try {
+    await animation.finished;
+  } catch {
+    // Clearing the list cancels an in-progress print.
+  } finally {
+    if (printAnimation === animation) {
+      printAnimation = null;
+      printButton.disabled = false;
+    }
+  }
 });
 
 renderList();
